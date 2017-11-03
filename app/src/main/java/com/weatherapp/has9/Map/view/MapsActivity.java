@@ -76,21 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        final String areaName= getIntent().getStringExtra("AreaName");
-        final String WeatherState = getIntent().getStringExtra("State");
-        final String Wind = getIntent().getStringExtra("Wind");
-        final String MaxTemp = getIntent().getStringExtra("Max");
-        final String MinTemp = getIntent().getStringExtra("Min");
-        final String Hum = getIntent().getStringExtra("Hum");
-        final String Temp = getIntent().getStringExtra("TempM");
-        Log.d("KL",Temp+"");
 
-        double mainTemp = Double.valueOf((String) MaxTemp);
-        temp = mainTemp - 273.5;
-        int tempInt = Integer.valueOf((int)temp);
-        double mainTemp2 = Double.valueOf((String)MinTemp);
-        temp2 = mainTemp2 - 273.5;
-        int tempInt2 = Integer.valueOf((int)temp2);
 
 
 
@@ -111,15 +97,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        String tempMain = PreferenceUtil.getInstance().getStringValue(Constants.TEMP,"");
-        tvName.setText(areaName);
-        tvHum.setText("Humidity: "+Hum);
-        tvState.setText(WeatherState);
-        tvWind.setText("Wind Speed: "+Wind);
-        tvMaxTemp.setText("Max. Temp: "+tempInt+" °C");
-        tvMinTemp.setText("Min. Temp: "+tempInt2+" °C");
-        tvTempCel.setText(tempMain);
 
+        dataFetching();
         //setUpToolbar();
         initView();
 
@@ -135,16 +114,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    public void dataFetching(){
+        final String areaName= getIntent().getStringExtra("AreaName");
+        final String WeatherState = getIntent().getStringExtra("State");
+        final String Wind = getIntent().getStringExtra("Wind");
+        final String MaxTemp = getIntent().getStringExtra("Max");
+        final String MinTemp = getIntent().getStringExtra("Min");
+        final String Hum = getIntent().getStringExtra("Hum");
+        final String Temp = getIntent().getStringExtra("TempM");
+        Log.d("KL",Temp+"");
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+        double mainTemp = Double.valueOf((String) MaxTemp);
+        temp = mainTemp - 273.5;
+        int tempInt = Integer.valueOf((int)temp);
+        double mainTemp2 = Double.valueOf((String)MinTemp);
+        temp2 = mainTemp2 - 273.5;
+        int tempInt2 = Integer.valueOf((int)temp2);
+
+        String tempMain = PreferenceUtil.getInstance().getStringValue(Constants.TEMP,"");
+        tvName.setText(areaName);
+        tvHum.setText("Humidity: "+Hum);
+        tvState.setText(WeatherState);
+        tvWind.setText("Wind Speed: "+Wind);
+        tvMaxTemp.setText("Max. Temp: "+tempInt+" °C");
+        tvMinTemp.setText("Min. Temp: "+tempInt2+" °C");
+        tvTempCel.setText(tempMain);
+    }
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

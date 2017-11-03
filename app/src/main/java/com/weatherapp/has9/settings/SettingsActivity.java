@@ -56,6 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
+
+
         localData = new LocalData(getApplicationContext());
         hour = localData.get_hour();
         min = localData.get_min();
@@ -95,6 +97,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         initView();
     }
+
     public void initView(){
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
