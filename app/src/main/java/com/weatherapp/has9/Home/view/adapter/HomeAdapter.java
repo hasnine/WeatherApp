@@ -2,6 +2,7 @@ package com.weatherapp.has9.Home.view.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,15 +48,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        double temp2 = mCityList.get(position).getMain().getTemp();
-        temp = (temp2-273.5);
-        int mainTemp = Integer.valueOf((int) temp);
+        double temp2 = mCityList.get(position).getMain().getTemp()-273.5;
+        int mainTemp = Integer.valueOf((int) temp2);
         holder.tvCityName.setText(mCityList.get(position).getName()+"");
-
-        PreferenceUtil.getInstance().editStringValue(Constants.TEMP,mainTemp+ " °C");
         holder.tvWeatherState.setText(mCityList.get(position).getWeather().get(0).getMain() + "");
-
         holder.tvTemp.setText(mainTemp+ " °C");
+
+        Log.d("LLLLLL",mainTemp+"");
 
     }
 

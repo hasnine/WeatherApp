@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/toolbarText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weather_app"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="80dp"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:background="@color/textColorSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <LinearLayout
+        android:id="@+id/llReminder"
+        style="@style/settings_item_layout">
+
+        <TextView
+            android:id="@+id/tv_reminder_header"
+            style="@style/settings_header"
+            android:text="@string/sett_reminder_header" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/tv_reminder_label"
+                style="@style/settings_sub_header"
+                android:text="@string/sett_reminder_label" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/timerSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:gravity="center_vertical"
+                android:theme="@style/switch_theme" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_reminder_desc"
+            style="@style/settings_details"
+            android:paddingBottom="@dimen/items_inbetween_space"
+            android:paddingTop="@dimen/items_top_padding"
+            android:text="@string/sett_reminder_desc" />
+
+        <LinearLayout
+            android:id="@+id/ll_set_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/items_inbetween_space">
+
+                <TextView
+                    android:id="@+id/tv_reminder_time_label"
+                    style="@style/settings_sub_header"
+                    android:text="@string/sett_reminder_time_label" />
+
+                <ImageView
+                    android:id="@+id/iv_timer"
+                    android:layout_width="@dimen/timer_icon"
+                    android:layout_height="@dimen/timer_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_timer" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_reminder_time_desc"
+                style="@style/settings_details"
+                android:paddingBottom="@dimen/items_inbetween_space"
+                android:paddingTop="@dimen/items_top_padding"
+                android:text="@string/sett_reminder_time_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

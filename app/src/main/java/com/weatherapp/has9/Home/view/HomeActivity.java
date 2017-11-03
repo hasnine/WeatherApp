@@ -11,9 +11,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iamsourav.sohoz.LogUtil;
+import com.iamsourav.sohoz.PreferenceUtil;
+import com.weatherapp.has9.Constants;
 import com.weatherapp.has9.Home.HomeContact;
 import com.weatherapp.has9.Home.model.List;
 import com.weatherapp.has9.Home.presenter.HomePresnetreImpl;
@@ -22,6 +25,7 @@ import com.weatherapp.has9.MainActivity;
 import com.weatherapp.has9.Map.view.MapsActivity;
 import com.weatherapp.has9.R;
 import com.weatherapp.has9.event.WeatherClickListener;
+import com.weatherapp.has9.settings.SettingsActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,6 +33,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeActivity extends AppCompatActivity implements HomeContact.HomeView{
 
@@ -41,6 +46,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContact.HomeV
 
     ProgressDialog progressDialog;
     boolean doubleBackToExitPressedOnce = false;
+
+    @BindView(R.id.ivTimer)
+    ImageView ivTimer;
+
 
 
     @Override
@@ -85,6 +94,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContact.HomeV
     @Override
     public void onLanguageChanged(int language) {
 
+    }
+
+    @OnClick(R.id.ivTimer)
+    void clickIvTimer(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -150,6 +165,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContact.HomeV
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void WeatherClickListener(WeatherClickListener event) {
+        double temp2 = event.getmList().getMain().getTemp()-273.5;
+        int mainTemp = Integer.valueOf((int) temp2);
+        PreferenceUtil.getInstance().editStringValue(Constants.TEMP,mainTemp+ " °C");
 
         Log.d("KKKK",event.getmList().getCoord().getLat()+"");
         Intent intent = new Intent(this, MapsActivity.class);
@@ -161,7 +179,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContact.HomeV
         intent.putExtra("Max",event.getmList().getMain().getTempMax()+"");
         intent.putExtra("Min",event.getmList().getMain().getTempMin()+"");
         intent.putExtra("Hum",event.getmList().getMain().getHumidity()+"");
-
         startActivity(intent);
 
     }
