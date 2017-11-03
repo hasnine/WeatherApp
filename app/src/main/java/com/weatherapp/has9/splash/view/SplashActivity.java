@@ -12,6 +12,10 @@ import com.weatherapp.has9.R;
 import com.weatherapp.has9.splash.SplashContact;
 import com.weatherapp.has9.splash.presenter.SplashPresenterImpl;
 
+/**
+ * Created by has9 on 11/3/17.
+ */
+
 public class SplashActivity extends AppCompatActivity implements SplashContact.SplashView{
 
     private SplashContact.SplashPresenter mSplashPresenter;

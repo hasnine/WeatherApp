@@ -28,6 +28,10 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Created by has9 on 11/3/17.
+ */
+
 public class SettingsActivity extends AppCompatActivity {
     String TAG = "RemindMe";
     LocalData localData;

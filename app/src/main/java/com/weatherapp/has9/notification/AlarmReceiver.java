@@ -12,9 +12,8 @@ import com.weatherapp.has9.settings.SettingsActivity;
 import com.weatherapp.has9.splash.view.SplashActivity;
 
 /**
- * Created by Jaison on 17/06/17.
+ * Created by has9 on 11/3/17.
  */
-
 public class AlarmReceiver extends BroadcastReceiver {
 
     String TAG = "AlarmReceiver";
